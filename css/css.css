@@ -1,0 +1,40 @@
+body{
+    background-color:#ffffff; 
+}
+
+table{
+   background-color:#2980b9 ; 
+   font-family: Helvetica;
+   font-size: 16px;
+   color:whitesmoke;
+   border: 2px grey solid;
+   border-radius: 10px;
+   height:90px;
+   padding:20px;
+   border-color: #2c3e50;
+    border-width: 2px;
+}
+
+th{
+    font-size: 14px;
+    color: #ececec;
+    padding:10px;
+    margin:10px;
+}
+
+h1{
+    font-family: Helvetica;
+    font-size: 38px;
+    color:#34495e;
+}
+
+a:link{
+    color: #2c3e50;
+    text-decoration: none;
+}
+a:visited{
+    color:#2c3e50;
+}
+a:hover{
+    color: #bdc3c7;
+}
