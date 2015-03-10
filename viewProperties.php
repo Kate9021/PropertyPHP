@@ -61,7 +61,8 @@ $statement = $gateway->getPropertys();
             </tbody>
         </table>
         <p><a href="createPropertyForm.php">Create Property</a></p>
-        </div>
+        <?php require 'footer.php'; ?>
+    </div>
         
     </body>
 </html>
