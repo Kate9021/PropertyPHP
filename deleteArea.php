@@ -20,5 +20,5 @@ $gateway = new PropertyTableGateway($connection);
 
 $gateway->deleteProperty($id);
 
-header("Location: home.php");
+header("Location: viewAreas.php");
 ?>

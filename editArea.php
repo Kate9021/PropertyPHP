@@ -30,4 +30,4 @@ if ($areaId == -1) {
 
 $gateway->updateArea($id, $name, $description, $facilities, $noOfProperties);
 
-header('Location: home.php');
+header('Location: viewAreas.php');

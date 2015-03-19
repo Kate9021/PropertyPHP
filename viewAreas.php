@@ -8,7 +8,7 @@ require 'ensureUserLoggedIn.php';
 $connection = Connection::getInstance();
 $areaGateway = new AreaTableGateway($connection);
 
-$area = $areaGateway->getAreas();
+$areas = $areaGateway->getAreas();
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,6 @@ $area = $areaGateway->getAreas();
                         <th>Name</th>
                         <th>Description</th>
                         <th>Facilities</th>
-                        <th>Number of Properties</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +49,6 @@ $area = $areaGateway->getAreas();
                         echo '<td>' . $row['name'] . '</td>';
                         echo '<td>' . $row['description'] . '</td>';
                         echo '<td>' . $row['facilities'] . '</td>';
-                        echo '<td>' . $row['noOfProperties'] . '</td>';
                         echo '<td>'
                         . '<a href="viewArea.php?id='.$row['id'].'">View</a> '
                         . '<a href="editAreaForm.php?id='.$row['id'].'">Edit</a> '

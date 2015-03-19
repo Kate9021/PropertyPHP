@@ -10,7 +10,7 @@ class AreaTableGateway {
 
     public function getAreas() {
         // execute a query to get all areas
-        $sqlQuery = "SELECT * FROM areas";
+        $sqlQuery = "SELECT * FROM area";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();
@@ -24,7 +24,7 @@ class AreaTableGateway {
 
     public function getAreaById($id) {
         // execute a query to get the area with the specified id
-        $sqlQuery = "SELECT * FROM areas WHERE id = :id";
+        $sqlQuery = "SELECT * FROM area WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
@@ -41,7 +41,7 @@ class AreaTableGateway {
     }
 
     public function insertArea($n, $d, $f, $nP) {
-        $sqlQuery = "INSERT INTO areas " .
+        $sqlQuery = "INSERT INTO area " .
                 "(name, description, facilities, noOfProperties) " .
                 "VALUES (:name, :description, :facilities :noOfProperties)";
 
@@ -65,7 +65,7 @@ class AreaTableGateway {
     }
 
     public function deleteArea($id) {
-        $sqlQuery = "DELETE FROM areas WHERE id = :id";
+        $sqlQuery = "DELETE FROM area WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
@@ -83,7 +83,7 @@ class AreaTableGateway {
 
     public function updateArea($id, $n, $d, $f, $nP) {
         $sqlQuery =
-                "UPDATE areas SET " .
+                "UPDATE area SET " .
                 
                 "name = :name, " .
                 "description = :description, " .

@@ -26,4 +26,4 @@ $id = $gateway->insertProperty($address, $description, $rent, $bedrooms);
 
 $message = "Property created successfully";
 
-header('Location: home.php');
+header('Location: viewProperties.php');

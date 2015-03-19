@@ -1,7 +1,6 @@
 <?php
 require_once 'Connection.php';
 require_once 'AreaTableGateway.php';
-require_once 'ProgrammerTableGateway.php';
 
 $sessionId = session_id();
 if ($sessionId == "") {
@@ -17,10 +16,8 @@ $id = $_GET['id'];
 
 $connection = Connection::getInstance();
 $areaGateway = new AreaTableGateway($connection);
-$programmerGateway = new ProgrammerTableGateway($connection);
 
 $areas = $areaGateway->getAreaById($id);
-$programmers = $programmerGateway->getProgrammersByAreaId($id);
 ?>
 <!DOCTYPE html>
 <html>

@@ -107,7 +107,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                                 else echo $row['noOfProperties'];
                             ?>" />
-                            <span id="staffNumberError" class="error">
+                            <span id="noOfPropertiesError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['noOfProperties'])) {
                                     echo $errorMessage['noOfProperties'];
