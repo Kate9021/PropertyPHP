@@ -1,7 +1,8 @@
 <?php
-require_once 'Area.php';
+/*require_once 'Area.php';*/
 require_once 'Connection.php';
 require_once 'AreaTableGateway.php';
+require_once 'PropertyTableGateway.php';
 
 $id = session_id();
 if ($id == "") {
@@ -16,9 +17,10 @@ if (!isset($_GET) || !isset($_GET['id'])) {
 $id = $_GET['id'];
 
 $connection = Connection::getInstance();
-$gateway = new AreaTableGateway($connection);
+$areaGateway = new AreaTableGateway($connection);
+$gateway = new PropertyTableGateway($connection);
 
-$statement = $gateway->getAreaById($id);
+$statement = $areaGateway->getAreaById($id);
 if ($statement->rowCount() !== 1) {
     die("Illegal request");
 }
@@ -30,7 +32,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/css.css">
-        <script type="text/javascript" src="js/createArea.js"></script>
+        <script type="text/javascript" src="js/area.js"></script>
     </head>
     <body>
         <?php require 'toolbar.php' ?>
@@ -47,16 +49,16 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                     <tr>
                         <td>Address</td>
                         <td>
-                            <input type="text" name="name" value="<?php
-                                if (isset($_POST) && isset($_POST['name'])) {
-                                    echo $_POST['name'];
+                            <input type="text" name="address" value="<?php
+                                if (isset($_POST) && isset($_POST['address'])) {
+                                    echo $_POST['address'];
                                 }
-                                else echo $row['name'];
-                            ?>" />
-                            <span id="emailError" class="error">
+                                else {echo $row['address'];}
+                            ?> "/>
+                            <span id="addressError" class="error">
                                 <?php
-                                if (isset($errorMessage) && isset($errorMessage['name'])) {
-                                    echo $errorMessage['name'];
+                                if (isset($errorMessage) && isset($errorMessage['address'])) {
+                                    echo $errorMessage['address'];
                                 }
                                 ?>
                             </span>
@@ -69,9 +71,9 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 if (isset($_POST) && isset($_POST['description'])) {
                                     echo $_POST['description'];
                                 }
-                                else echo $row['description'];
+                                else {echo $row['description'];}
                             ?>" />
-                            <span id="emailError" class="error">
+                            <span id="descriptionError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['description'])) {
                                     echo $errorMessage['description'];
@@ -81,36 +83,18 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                         </td>
                     </tr>
                     <tr>
-                        <td>Rent</td>
+                        <td>Facilities</td>
                         <td>
                             <input type="text" name="facilities" value="<?php
                                 if (isset($_POST) && isset($_POST['facilities'])) {
                                     echo $_POST['facilities'];
                                 }
-                                else echo $row['facilities'];
+                                else {echo $row['facilities'];}
                             ?>" />
-                            <span id="mobileError" class="error">
+                            <span id="facilitiesError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['facilities'])) {
                                     echo $errorMessage['facilities'];
-                                }
-                                ?>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Bedrooms</td>
-                        <td>
-                            <input type="text" name="noOfProperties" value="<?php
-                                if (isset($_POST) && isset($_POST['noOfProperties'])) {
-                                    echo $_POST['noOfProperties'];
-                                }
-                                else echo $row['noOfProperties'];
-                            ?>" />
-                            <span id="noOfPropertiesError" class="error">
-                                <?php
-                                if (isset($errorMessage) && isset($errorMessage['noOfProperties'])) {
-                                    echo $errorMessage['noOfProperties'];
                                 }
                                 ?>
                             </span>

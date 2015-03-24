@@ -13,11 +13,11 @@ require 'ensureUserLoggedIn.php';
 $connection = Connection::getInstance();
 $gateway = new PropertyTableGateway($connection);
 
-$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-$address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
-$description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
-$rent = filter_input(INPUT_POST, 'rent', FILTER_SANITIZE_NUMBER_INT);
-$bedrooms = filter_input(INPUT_POST, 'bedrooms', FILTER_SANITIZE_NUMBER_INT);
+$id = filter_input(INPUT_POST,          'id',           FILTER_SANITIZE_NUMBER_INT);
+$address = filter_input(INPUT_POST,     'address',      FILTER_SANITIZE_STRING);
+$description = filter_input(INPUT_POST, 'description',  FILTER_SANITIZE_STRING);
+$rent = filter_input(INPUT_POST,        'rent',         FILTER_SANITIZE_NUMBER_INT);
+$bedrooms = filter_input(INPUT_POST,    'bedrooms',     FILTER_SANITIZE_NUMBER_INT);
 
 
 $rentValid = filter_var($rent, FILTER_VALIDATE_INT);

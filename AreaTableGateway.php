@@ -40,17 +40,16 @@ class AreaTableGateway {
         return $statement;
     }
 
-    public function insertArea($n, $d, $f, $nP) {
+    public function insertArea($a, $d, $f) {
         $sqlQuery = "INSERT INTO area " .
-                "(name, description, facilities, noOfProperties) " .
-                "VALUES (:name, :description, :facilities :noOfProperties)";
+                "(address, description, facilities) " .
+                "VALUES (:address, :description, :facilities )";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
-            "name" => $n,
+            "address" => $a,
             "description" => $d,
-            "facilities" => $f,
-            "noOfProperties" => $nP
+            "facilities" => $f
         );
 
         $status = $statement->execute($params);
@@ -81,23 +80,21 @@ class AreaTableGateway {
         return ($statement->rowCount() == 1);
     }
 
-    public function updateArea($id, $n, $d, $f, $nP) {
+    public function updateArea($id, $a, $d, $f) {
         $sqlQuery =
                 "UPDATE area SET " .
                 
-                "name = :name, " .
+                "address = :address, " .
                 "description = :description, " .
                 "facilities = :facilities " .
-                "noOfProperties = :noOfProperties" .
                 "WHERE id = :id";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
             "id" => $id,
-            "name" => $n,
+            "address" => $a,
             "description" => $d,
-            "facilities" => $f,
-            "noOfProperties" => $nP
+            "facilities" => $f
         );
 
         $status = $statement->execute($params);

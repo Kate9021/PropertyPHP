@@ -9,9 +9,9 @@ require 'ensureUserLoggedIn.php';
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Property Management</title>
+        <title>Property Management Company</title>
         <link rel="stylesheet" type="text/css" href="css/css.css">
-        <script type="text/javascript" src="js/createProperty.js"></script>
+        <script type="text/javascript" src="js/property.js"></script>
     </head>
     <body>
         <?php require 'toolbar.php' ?>

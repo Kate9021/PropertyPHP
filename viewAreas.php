@@ -14,7 +14,7 @@ $areas = $areaGateway->getAreas();
 <html>
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" src="js/area.js.js"></script>
+        <script type="text/javascript" src="js/area.js"></script>
         <title>Areas</title>
     </head>
     <body>
@@ -36,7 +36,7 @@ $areas = $areaGateway->getAreas();
                 <thead>
                     <tr>
                         <!-- <th>I.D.</th> -->
-                        <th>Name</th>
+                        <th>Address</th>
                         <th>Description</th>
                         <th>Facilities</th>
                     </tr>
@@ -46,13 +46,13 @@ $areas = $areaGateway->getAreas();
                     $row = $areas->fetch(PDO::FETCH_ASSOC);
                     while ($row) {
 
-                        echo '<td>' . $row['name'] . '</td>';
+                        echo '<td>' . $row['address'] . '</td>';
                         echo '<td>' . $row['description'] . '</td>';
                         echo '<td>' . $row['facilities'] . '</td>';
                         echo '<td>'
                         . '<a href="viewArea.php?id='.$row['id'].'">View</a> '
                         . '<a href="editAreaForm.php?id='.$row['id'].'">Edit</a> '
-                        . '<a class="deleteArea" href="deleteArea.php?id='.$row['id'].'">Delete</a> '
+                        . '<a href="deleteArea.php?id='.$row['id'].'">Delete</a> '
                         . '</td>';
                         echo '</tr>';
 

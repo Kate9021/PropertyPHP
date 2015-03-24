@@ -2,6 +2,7 @@
 require_once 'Property.php';
 require_once 'Connection.php';
 require_once 'PropertyTableGateway.php';
+require_once 'AreaTableGateway.php';
 
 $id = session_id();
 if ($id == "") {
@@ -17,6 +18,7 @@ $id = $_GET['id'];
 
 $connection = Connection::getInstance();
 $gateway = new PropertyTableGateway($connection);
+$areaGateway = new AreaTableGateway($connection);
 
 $statement = $gateway->getPropertyById($id);
 if ($statement->rowCount() !== 1) {
@@ -53,7 +55,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                                 else echo $row['address'];
                             ?>" />
-                            <span id="emailError" class="error">
+                            <span id="addressError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['address'])) {
                                     echo $errorMessage['address'];
@@ -71,7 +73,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                                 else echo $row['description'];
                             ?>" />
-                            <span id="emailError" class="error">
+                            <span id="descriptionError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['description'])) {
                                     echo $errorMessage['description'];
@@ -89,7 +91,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                                 else echo $row['rent'];
                             ?>" />
-                            <span id="mobileError" class="error">
+                            <span id="rentError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['rent'])) {
                                     echo $errorMessage['rent'];
@@ -107,7 +109,7 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                                 else echo $row['bedrooms'];
                             ?>" />
-                            <span id="staffNumberError" class="error">
+                            <span id="bedroomsError" class="error">
                                 <?php
                                 if (isset($errorMessage) && isset($errorMessage['bedrooms'])) {
                                     echo $errorMessage['bedrooms'];

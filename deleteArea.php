@@ -1,7 +1,7 @@
 <?php
-require_once 'Property.php';
+require_once 'Area.php';
 require_once 'Connection.php';
-require_once 'PropertyTableGateway.php';
+require_once 'AreaTableGateway.php';
 
 $id = session_id();
 if ($id == "") {
@@ -16,9 +16,9 @@ if (!isset($_GET) || !isset($_GET['id'])) {
 $id = $_GET['id'];
 
 $connection = Connection::getInstance();
-$gateway = new PropertyTableGateway($connection);
+$gateway = new AreaTableGateway($connection);
 
-$gateway->deleteProperty($id);
+$gateway->deleteArea($id);
 
 header("Location: viewAreas.php");
 ?>

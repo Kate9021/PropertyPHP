@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" src="js/property.js"></script>
-        <title></title>
+        <title>Property Management Company</title>
     </head>
     <body>
         <?php require 'toolbar.php' ?>

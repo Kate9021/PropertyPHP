@@ -32,9 +32,9 @@ $areas = $areaGateway->getAreaById($id);
         <?php require 'mainMenu.php' ?>
         <h2>View Area Details</h2>
         <?php
-        if (isset($message)) {
+        /*if (isset($message)) {
             echo '<p>'.$message.'</p>';
-        }
+        }*/
         ?>
         <table>
             <tbody>
@@ -42,7 +42,7 @@ $areas = $areaGateway->getAreaById($id);
                 $area = $areas->fetch(PDO::FETCH_ASSOC);
                 echo '<tr>';
                 echo '<td>Name</td>'
-                . '<td>' . $area['name'] . '</td>';
+                . '<td>' . $area['address'] . '</td>';
                 echo '</tr>';
                 echo '<tr>';
                 echo '<td>Description</td>'
@@ -53,8 +53,8 @@ $areas = $areaGateway->getAreaById($id);
                 . '<td>' . $area['facilities'] . '</td>';
                 echo '</tr>';
                 echo '<tr>';
-                echo '<td>Number of Properties</td>'
-                . '<td>' . $area['noOfProperties'] . '</td>';
+                echo '<td>Area I.D.</td>'
+                . '<td>' . $area['id'] . '</td>';
                 echo '</tr>';
                 ?>
             </tbody>
@@ -65,8 +65,8 @@ $areas = $areaGateway->getAreaById($id);
             <a class="deleteArea" href="deleteArea.php?id=<?php echo $area['id']; ?>">
                 Delete Area</a>
         </p>
-        <h3>Programmers Assigned to <?php echo $area['name']; ?></h3>
-        <?php if ($programmers->rowCount() !== 0) { ?>
+        <h3>Properties Assigned to <?php echo $area['name']; ?></h3>
+        <?php if ($statement->rowCount() !== 0) { ?>
             <table>
                 <thead>
                     <tr>
@@ -75,31 +75,30 @@ $areas = $areaGateway->getAreaById($id);
                         <th>Rent</th>
                         <th>Bedrooms</th>
                         <th>Area</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $row = $programmers->fetch(PDO::FETCH_ASSOC);
+                    $row = $statement->fetch(PDO::FETCH_ASSOC);
                     while ($row) {
                         echo '<td>' . $row['name'] . '</td>';
                         echo '<td>' . $row['description'] . '</td>';
                         echo '<td>' . $row['rent'] . '</td>';
                         echo '<td>' . $row['bedrooms'] . '</td>';
                         echo '<td>'
-                        . '<a href="viewProgrammer.php?id='.$row['id'].'">View</a> '
-                        . '<a href="editProgrammerForm.php?id='.$row['id'].'">Edit</a> '
-                        . '<a class="deleteProgrammer" href="deleteProgrammer.php?id='.$row['id'].'">Delete</a> '
+                        . '<a href="viewProperty.php?id='.$row['id'].'">View</a> '
+                        . '<a href="editPropertyForm.php?id='.$row['id'].'">Edit</a> '
+                        . '<a class="deleteProperty.php?id" href="deleteProperty.php?id='.$row['id'].'">Delete</a> '
                         . '</td>';
                         echo '</tr>';
 
-                        $row = $programmers->fetch(PDO::FETCH_ASSOC);
+                        $row = $statement->fetch(PDO::FETCH_ASSOC);
                     }
                     ?>
                 </tbody>
             </table>
         <?php } else { ?>
-            <p>There are no programmers assigned to this area.</p>
+            <p>There are no properties assigned to this area.</p>
         <?php } ?>
         <?php require 'footer.php'; ?>
     </body>
